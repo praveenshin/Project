@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="BusApp">
+<head>
+    <title></title>
+    <script src="../../lib/angular/angular.min.js"></script>
+    <script src="../../lib/angular-route/angular-route.min.js"></script>
+
+    <script src="../Controllers/ClientBus.js"></script>
+    
+</head>
+<body ng-controller="BusController">
+    <font color="Red"><h1>Bus Details</h1></font>
+    <div>
+        <table border="1" bgcolor="gray">
+            <tr style="color: yellow;">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Bus Number</th>
+                <th>Category Id</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Departure Time</th>
+                <th>Route Id</th>
+            </tr>
+
+            <tr ng-repeat="a in Buses">
+                <td>{{a.bus_id}}</td>
+                <td>{{a.bus_name}}</td>
+                <td>{{a.bus_no}}</td>
+                <td>{{a.category_id}}</td>
+                <td>{{a.start_date}}</td>
+                <td>{{a.end_date}}</td>
+                <td>{{a.departure_time}}</td>
+                <td>{{a.route_id}}</td>
+            </tr>
+
+        </table>
+        <br/>
+        <input type="button" value="Get" ng-click="getAll()" />
+        <br/>
+        <br />
+        <br />
+        <br />
+    </div>
+
+    <font color="Red"><h1>Search Bus</h1></font>
+    <div>
+        <table border="1" bgcolor="gray">
+            <tr style="color: yellow;">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Bus Number</th>
+                <th>Category Id</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Departure Time</th>
+                <th>Route Id</th>
+            </tr>
+
+            <tr>
+                <td>{{bus.bus_id}}</td>
+                <td>{{bus.bus_name}}</td>
+                <td>{{bus.bus_no}}</td>
+                <td>{{bus.category_id}}</td>
+                <td>{{bus.start_date}}</td>
+                <td>{{bus.end_date}}</td>
+                <td>{{bus.departure_time}}</td>
+                <td>{{bus.route_id}}</td>
+            </tr>
+
+        </table>
+        <br/>
+        <input type="text" name="id1" ng-model="id" />
+        <input type="button" value="GetById" ng-click="get()" />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+
+  <font color="Red"><h1>Add & Edit Buses</h1></font>  
+    <div>
+        <table border="1" >
+            <tr>
+                <th>Id</th>
+                <td><input type="text" name="id" ng-model="ide" /></td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name" ng-model="Bus.bus_name" /></td>
+            </tr>
+            <tr>
+                <th>Bus Number</th>
+                <td><input type="text" name="no" ng-model="Bus.bus_no" /></td>
+            </tr>
+            <tr>
+                <th>Category Id</th>
+                <td><input type="text" name="cid" ng-model="Bus.category_id" /></td>
+            </tr>
+            <tr>
+                <th>Start Date</th>
+                <td><input type="text" name="sd" ng-model="Bus.start_date" /></td>
+            </tr>
+            <tr>
+                <th>End Date</th>
+                <td><input type="text" name="dd" ng-model="Bus.end_date" /></td>
+            </tr>
+            <tr>
+                <th>Departure Time</th>
+                <td><input type="text" name="dt" ng-model="Bus.departure_time" /></td>
+           
+            </tr>
+            <tr>
+                <th>Route Id</th>
+                <td><input type="text" name="rid" ng-model="Bus.route_id" /></td>
+            </tr>   
+
+        </table>
+        <br/>
+        <input type="button" value="Add" ng-click="insert(Bus)" />
+        <input type="button" value="Edit" ng-click="edit(ide,Bus)" />
+        <input type="button" value="Clear" ng-click="clear()" />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    <font color="Red"><h1>Remove Buses</h1></font>
+    <div>
+        <input type="text" name="id2" ng-model="id2" />
+        <input type="button" value="Remove" ng-click="remove()" />
+        <input type="button" value="Clear" ng-click="clear()" />
+    </div>
+</body>
+</html>

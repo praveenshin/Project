@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+    <EntitySetMapping Name="Buses">
+      <EntityTypeMapping TypeName="DatabaseModel.Bus">
+        <MappingFragment StoreEntitySet="Bus">
+          <ScalarProperty Name="bus_id" ColumnName="bus_id" />
+          <ScalarProperty Name="bus_name" ColumnName="bus_name" />
+          <ScalarProperty Name="bus_no" ColumnName="bus_no" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="departure_time" ColumnName="departure_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="DatabaseModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="above_16" ColumnName="above_16" />
+          <ScalarProperty Name="below_16" ColumnName="below_16" />
+          <ScalarProperty Name="below_5" ColumnName="below_5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passengers">
+      <EntityTypeMapping TypeName="DatabaseModel.Passenger">
+        <MappingFragment StoreEntitySet="Passenger">
+          <ScalarProperty Name="passenger_id" ColumnName="passenger_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="DatabaseModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+          <ScalarProperty Name="bus_id" ColumnName="bus_id" />
+          <ScalarProperty Name="passenger_id" ColumnName="passenger_id" />
+          <ScalarProperty Name="fare" ColumnName="fare" />
+          <ScalarProperty Name="date_of_journey" ColumnName="date_of_journey" />
+          <ScalarProperty Name="seat_id" ColumnName="seat_id" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Routes">
+      <EntityTypeMapping TypeName="DatabaseModel.Route">
+        <MappingFragment StoreEntitySet="Route">
+          <ScalarProperty Name="route_id" ColumnName="route_id" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="destination" ColumnName="destination" />
+          <ScalarProperty Name="distance" ColumnName="distance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_details">
+      <EntityTypeMapping TypeName="DatabaseModel.User_details">
+        <MappingFragment StoreEntitySet="User_details">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="RouteApp">
+<head>
+    <title></title>
+    <script src="../../lib/angular/angular.min.js"></script>
+    <script src="../../lib/angular-route/angular-route.min.js"></script>
+
+    <script src="../Controllers/ClientRoute.js"></script>
+   
+</head>
+<body ng-controller="RouteController">
+   <font color="Red"><h1>Route Details</h1></font> 
+    <div>
+        <table border="1" bgcolor="gray">
+            <tr style="color:yellow">
+                <th>Id</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Distance</th>     
+            </tr>
+
+            <tr ng-repeat="a in Routes">
+                <td>{{a.route_id}}</td>
+                <td>{{a.source}}</td>
+                <td>{{a.destination}}</td>
+                <td>{{a.distance}}</td>
+               
+            </tr>
+
+        </table>
+        <br />
+        <input type="button" value="Get" ng-click="getAll()" />
+        <br/>
+        <br />
+        <br />
+        <br />
+    </div>
+    <font color="Red"><h1>Search Routes</h1></font> 
+    <div>
+        <table border="1" bgcolor="gray">
+            <tr style="color:yellow;">
+                <th>Id</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Distance</th>
+            </tr>
+
+            <tr>
+                <td>{{route.route_id}}</td>
+                <td>{{route.source}}</td>
+                <td>{{route.destination}}</td>
+                <td>{{route.distance}}</td>
+            </tr>
+
+        </table>
+        <input type="text" name="id1" ng-model="id" />
+        <input type="button" value="GetById" ng-click="get()" />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    <font color="Red"><h1>Add & Edit Routes</h1></font> 
+    <div>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <td><input type="text" name="id" ng-model="ide" /></td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td><input type="text" name="name" ng-model="Route.Source" /></td>
+            </tr>
+            <tr>
+                <th>Destination</th>
+                <td><input type="text" name="no" ng-model="Route.Destination" /></td>
+            </tr>
+            <tr>
+                <th>Distance</th>
+                <td><input type="text" name="cid" ng-model="Route.Distance" /></td>
+            </tr>
+
+           
+    
+               
+
+        </table>
+        <br/>
+        <input type="button" value="Add" ng-click="add(Route)" />
+        <input type="button" value="Edit" ng-click="edit(ide,Route)" />
+        <input type="button" value="Clear" ng-click="clear()" />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    <font color="Red"><h1>Remove Routes</h1></font> 
+    <div>
+        <input type="text" name="id2" ng-model="id2" />
+        <input type="button" value="Remove" ng-click="remove()" />
+        <input type="button" value="Clear" ng-click="clear()" />
+    </div>
+</body>
+</html>

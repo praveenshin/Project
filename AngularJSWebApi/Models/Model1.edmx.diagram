@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="048ca048da254c598dfabaaed753c374" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseModel.Bus" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Category" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Passenger" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Reservation" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Route" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.User_details" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseModel.FK__Bus__category_id__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK__Bus__route_id__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK__Reservati__bus_i__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK__Reservati__categ__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK__Passenger__user___1367E606" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK__Reservati__passe__239E4DCF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

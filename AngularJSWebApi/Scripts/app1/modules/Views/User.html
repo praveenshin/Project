@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="UserApp">
+<head>
+    <title></title>
+
+    <script src="../../lib/angular/angular.min.js"></script>
+    <script src="../../lib/angular-route/angular-route.min.js"></script>
+    <script src="../Controllers/ClientUser.js"></script>
+    
+    
+</head>
+<body ng-controller="UserController">
+   <font color="Red"><h1>User Details</h1></font> 
+    <div>
+        <table border="1" bgcolor="gray">
+            <tr style="color:yellow">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Date Of Birth</th>
+                <th>Email</th>
+                <th>Mobile No</th>
+                <th>Password</th>
+                <th>Address</th>      
+            </tr>
+
+            <tr ng-repeat="a in Users">
+                <td>{{a.user_id}}</td>
+                <td>{{a.name}}</td>
+                <td>{{a.date_of_birth}}</td>
+                <td>{{a.email_id}}</td>
+                <td>{{a.mobile_no}}</td>
+                <td>{{a.password}}</td>
+                <td>{{a.address}}</td>
+            </tr>
+
+        </table>
+        <input type="button" value="Get" ng-click="getAll()" />
+        <br/>
+        <br />
+        <br />
+        <br />
+    </div>
+    <font color="Red"><h1>Search Users</h1></font> 
+    <div>
+        <table border="1" bgcolor="gray">
+            <tr style="color:yellow">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Date Of Birth</th>
+                <th>Email</th>
+                <th>Mobile No</th>
+                <th>Password</th>
+                <th>Address</th>             
+            </tr>
+
+            <tr>
+                <td>{{user.user_id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.date_of_birth}}</td>
+                <td>{{user.email_id}}</td>
+                <td>{{user.mobile_no}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.address}}</td>
+            </tr>
+
+        </table>
+        <input type="text" name="id1" ng-model="id" />
+        <input type="button" value="GetById" ng-click="get()" />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    <font color="Red"><h1>Add & Edit Users</h1></font> 
+    <div>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <td><input type="text" name="id" ng-model="ide" /></td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name" ng-model="User.Name" /></td>
+            </tr>
+            <tr>
+                <th>Date Of Birth</th>
+                <td><input type="text" name="no" ng-model="User.date_of_birth" /></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="text" name="cid" ng-model="User.email_id" /></td>
+            </tr>
+            <tr>
+                <th>Mobile No</th>
+                <td><input type="text" name="sd" ng-model="User.mobile_no" /></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="text" name="dd" ng-model="User.Password" /></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td><input type="text" name="dt" ng-model="User.Address" /></td>
+           
+            </tr>
+               
+
+        </table>
+       
+        <input type="button" value="Add" ng-click="add(User)" />
+        <input type="button" value="Edit" ng-click="edit(ide,User)" />
+        <input type="button" value="Clear" ng-click="clear()" />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    <font color="Red"><h1>Remove Users</h1></font> 
+    <div>
+        <input type="text" name="id2" ng-model="id2" />
+        <input type="button" value="Remove" ng-click="remove()" />
+        <input type="button" value="Clear" ng-click="clear()" />
+    </div>
+</body>
+</html>

@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bus">
+          <Key>
+            <PropertyRef Name="bus_id" />
+          </Key>
+          <Property Name="bus_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bus_name" Type="varchar" MaxLength="50" />
+          <Property Name="bus_no" Type="int" />
+          <Property Name="category_id" Type="int" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="end_date" Type="date" />
+          <Property Name="departure_time" Type="time" Precision="7" />
+          <Property Name="route_id" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Bus_Seat' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Bus_Seat">
+          <Property Name="seat" Type="int" />
+          <Property Name="bus_id" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="20" />
+          <Property Name="above_16" Type="int" />
+          <Property Name="below_16" Type="int" />
+          <Property Name="below_5" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Fare_Details' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Fare_Details">
+          <Property Name="fare" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="route_id" Type="int" />
+          <Property Name="bus_id" Type="int" />
+          <Property Name="category_id" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Junction' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Junction">
+          <Property Name="bus_id" Type="int" />
+          <Property Name="category_id" Type="int" />
+          <Property Name="route_id" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="passenger_id" Type="int" />
+          <Property Name="reservation_id" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="passenger_id" />
+          </Key>
+          <Property Name="passenger_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="mobile_no" Type="bigint" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="reservation_id" />
+          </Key>
+          <Property Name="reservation_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bus_id" Type="int" Nullable="false" />
+          <Property Name="passenger_id" Type="int" Nullable="false" />
+          <Property Name="fare" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="date_of_journey" Type="date" Nullable="false" />
+          <Property Name="seat_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="route_id" />
+          </Key>
+          <Property Name="route_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="source" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="destination" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="distance" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Ticket_price_details' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Ticket_price_details">
+          <Property Name="total_amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="user_id" Type="int" />
+        </EntityType>-->
+        <EntityType Name="User_details">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="date_of_birth" Type="date" Nullable="false" />
+          <Property Name="email_id" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="mobile_no" Type="bigint" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Bus__category_id__1B0907CE">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bus" Type="Self.Bus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="Bus">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bus__route_id__36B12243">
+          <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
+          <End Role="Bus" Type="Self.Bus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="route_id" />
+            </Principal>
+            <Dependent Role="Bus">
+              <PropertyRef Name="route_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Bus_Seat' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Bus_Seat__bus_id__1CF15040" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Fare_Details' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Fare_Deta__bus_i__1FCDBCEB" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Fare_Details' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Fare_Deta__categ__20C1E124" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Fare_Details' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Fare_Deta__route__1ED998B2" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Junction' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Junction__bus_id__276EDEB3" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Junction' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Junction__catego__2A4B4B5E" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Junction' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Junction__reserv__29572725" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Junction' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Junction__route___2B3F6F97" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Junction' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Junction__user_i__286302EC" />-->
+        <Association Name="FK__Passenger__user___1367E606">
+          <End Role="User_details" Type="Self.User_details" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Passenger" Type="Self.Passenger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_details">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Passenger">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__bus_i__24927208">
+          <End Role="Bus" Type="Self.Bus" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bus">
+              <PropertyRef Name="bus_id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="bus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__categ__25869641">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__passe__239E4DCF">
+          <End Role="Passenger" Type="Self.Passenger" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passenger">
+              <PropertyRef Name="passenger_id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="passenger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'C:\USERS\PRAVEENSH\DESKTOP\ANGULARJSWEBAPI\ANGULARJSWEBAPI\APP_DATA\DATABASE.MDF.dbo.Ticket_price_details' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Ticket_pr__user___2E1BDC42" />-->
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Bus" EntityType="Self.Bus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passenger" EntityType="Self.Passenger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_details" EntityType="Self.User_details" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Bus__category_id__1B0907CE" Association="Self.FK__Bus__category_id__1B0907CE">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Bus" EntitySet="Bus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bus__route_id__36B12243" Association="Self.FK__Bus__route_id__36B12243">
+            <End Role="Route" EntitySet="Route" />
+            <End Role="Bus" EntitySet="Bus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passenger__user___1367E606" Association="Self.FK__Passenger__user___1367E606">
+            <End Role="User_details" EntitySet="User_details" />
+            <End Role="Passenger" EntitySet="Passenger" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__bus_i__24927208" Association="Self.FK__Reservati__bus_i__24927208">
+            <End Role="Bus" EntitySet="Bus" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__categ__25869641" Association="Self.FK__Reservati__categ__25869641">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__passe__239E4DCF" Association="Self.FK__Reservati__passe__239E4DCF">
+            <End Role="Passenger" EntitySet="Passenger" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bus">
+          <Key>
+            <PropertyRef Name="bus_id" />
+          </Key>
+          <Property Name="bus_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bus_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bus_no" Type="Int32" />
+          <Property Name="category_id" Type="Int32" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="departure_time" Type="Time" Precision="7" />
+          <Property Name="route_id" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Bus__category_id__1B0907CE" FromRole="Bus" ToRole="Category" />
+          <NavigationProperty Name="Route" Relationship="Self.FK__Bus__route_id__36B12243" FromRole="Bus" ToRole="Route" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__bus_i__24927208" FromRole="Bus" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="above_16" Type="Int32" />
+          <Property Name="below_16" Type="Int32" />
+          <Property Name="below_5" Type="Int32" />
+          <NavigationProperty Name="Buses" Relationship="Self.FK__Bus__category_id__1B0907CE" FromRole="Category" ToRole="Bus" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__categ__25869641" FromRole="Category" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="passenger_id" />
+          </Key>
+          <Property Name="passenger_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="mobile_no" Type="Int64" Nullable="false" />
+          <Property Name="user_id" Type="Int32" />
+          <NavigationProperty Name="User_details" Relationship="Self.FK__Passenger__user___1367E606" FromRole="Passenger" ToRole="User_details" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__passe__239E4DCF" FromRole="Passenger" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="reservation_id" />
+          </Key>
+          <Property Name="reservation_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bus_id" Type="Int32" Nullable="false" />
+          <Property Name="passenger_id" Type="Int32" Nullable="false" />
+          <Property Name="fare" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="date_of_journey" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="seat_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bus" Relationship="Self.FK__Reservati__bus_i__24927208" FromRole="Reservation" ToRole="Bus" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Reservati__categ__25869641" FromRole="Reservation" ToRole="Category" />
+          <NavigationProperty Name="Passenger" Relationship="Self.FK__Reservati__passe__239E4DCF" FromRole="Reservation" ToRole="Passenger" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="route_id" />
+          </Key>
+          <Property Name="route_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="source" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="destination" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="distance" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Buses" Relationship="Self.FK__Bus__route_id__36B12243" FromRole="Route" ToRole="Bus" />
+        </EntityType>
+        <EntityType Name="User_details">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date_of_birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="email_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mobile_no" Type="Int64" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Passengers" Relationship="Self.FK__Passenger__user___1367E606" FromRole="User_details" ToRole="Passenger" />
+        </EntityType>
+        <Association Name="FK__Bus__category_id__1B0907CE">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bus" Type="Self.Bus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="Bus">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bus__route_id__36B12243">
+          <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
+          <End Role="Bus" Type="Self.Bus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="route_id" />
+            </Principal>
+            <Dependent Role="Bus">
+              <PropertyRef Name="route_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__bus_i__24927208">
+          <End Role="Bus" Type="Self.Bus" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bus">
+              <PropertyRef Name="bus_id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="bus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__categ__25869641">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Passenger__user___1367E606">
+          <End Role="User_details" Type="Self.User_details" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Passenger" Type="Self.Passenger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_details">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Passenger">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__passe__239E4DCF">
+          <End Role="Passenger" Type="Self.Passenger" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passenger">
+              <PropertyRef Name="passenger_id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="passenger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Buses" EntityType="Self.Bus" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Passengers" EntityType="Self.Passenger" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+          <EntitySet Name="Routes" EntityType="Self.Route" />
+          <EntitySet Name="User_details" EntityType="Self.User_details" />
+          <AssociationSet Name="FK__Bus__category_id__1B0907CE" Association="Self.FK__Bus__category_id__1B0907CE">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Bus" EntitySet="Buses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bus__route_id__36B12243" Association="Self.FK__Bus__route_id__36B12243">
+            <End Role="Route" EntitySet="Routes" />
+            <End Role="Bus" EntitySet="Buses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__bus_i__24927208" Association="Self.FK__Reservati__bus_i__24927208">
+            <End Role="Bus" EntitySet="Buses" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__categ__25869641" Association="Self.FK__Reservati__categ__25869641">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passenger__user___1367E606" Association="Self.FK__Passenger__user___1367E606">
+            <End Role="User_details" EntitySet="User_details" />
+            <End Role="Passenger" EntitySet="Passengers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__passe__239E4DCF" Association="Self.FK__Reservati__passe__239E4DCF">
+            <End Role="Passenger" EntitySet="Passengers" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities1">
+          <EntitySetMapping Name="Buses">
+            <EntityTypeMapping TypeName="DatabaseModel.Bus">
+              <MappingFragment StoreEntitySet="Bus">
+                <ScalarProperty Name="bus_id" ColumnName="bus_id" />
+                <ScalarProperty Name="bus_name" ColumnName="bus_name" />
+                <ScalarProperty Name="bus_no" ColumnName="bus_no" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="departure_time" ColumnName="departure_time" />
+                <ScalarProperty Name="route_id" ColumnName="route_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="DatabaseModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="above_16" ColumnName="above_16" />
+                <ScalarProperty Name="below_16" ColumnName="below_16" />
+                <ScalarProperty Name="below_5" ColumnName="below_5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passengers">
+            <EntityTypeMapping TypeName="DatabaseModel.Passenger">
+              <MappingFragment StoreEntitySet="Passenger">
+                <ScalarProperty Name="passenger_id" ColumnName="passenger_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="DatabaseModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+                <ScalarProperty Name="bus_id" ColumnName="bus_id" />
+                <ScalarProperty Name="passenger_id" ColumnName="passenger_id" />
+                <ScalarProperty Name="fare" ColumnName="fare" />
+                <ScalarProperty Name="date_of_journey" ColumnName="date_of_journey" />
+                <ScalarProperty Name="seat_id" ColumnName="seat_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Routes">
+            <EntityTypeMapping TypeName="DatabaseModel.Route">
+              <MappingFragment StoreEntitySet="Route">
+                <ScalarProperty Name="route_id" ColumnName="route_id" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="destination" ColumnName="destination" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_details">
+            <EntityTypeMapping TypeName="DatabaseModel.User_details">
+              <MappingFragment StoreEntitySet="User_details">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

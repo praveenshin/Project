@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Search","Search"))
+{
+    @Html.AntiForgeryToken()
+
+    <h2><u><font color="Green">Search Buses</font></u></h2>
+    <br/><br />
+    <body>
+            <div>
+
+                <label><b>From Station</b><font color="Red">*</font></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" name="source" id="source" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label><b>To Station</b><font color="Red">*</font></label>&nbsp;&nbsp;&nbsp;
+                <input type="text" name="destination" id="destination" />
+                <br/><br /><br />
+                <label><b>Journey Date</b><font color="Red">*</font></label>&nbsp;&nbsp;&nbsp;
+                <input type="date" name="jdate" id="jdate" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label><b>Bus Type</b><font color="Red">*</font></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select id="cid" name="cid">
+                    <option value="-1">Select Type</option>
+                    <option value="1001">AC</option>
+                    <option value="1002">NON-AC</option>
+                    <option value="1003">SLEEPER</option>
+                    <option value="1004">SEMI-SLEEPER</option>
+                </select>
+                <br/><br/><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Search" />&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="reset" value="Reset" />
+            </div>
+    </body>
+}
