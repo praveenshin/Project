@@ -10,18 +10,15 @@
 
     <br />
     <br />
-    <br />
-    <br />
-@if(ViewBag.message == 0)
+  
+@if (ViewBag.message == 0)
 {
-         <font color="Red"><p>Sorry Not Available</p></font>
+         <font color="Red"><p>*Sorry Not Available*</p></font>
 
 }
-else
+@if (ViewBag.cid == "-1" && ViewBag.message != 0 )
 {
-
-    
-     <table class="table">
+     <table class="table" border="1">
         <tr>
             <th>
                 Bus Name
@@ -41,6 +38,8 @@ else
             <th>
                 Type
             </th>
+            <th>Seats Available</th>
+            <th></th>
         </tr>
 
         @foreach (var item in Model)
@@ -64,10 +63,12 @@ else
                 <td>
                     @Html.DisplayFor(modelItem => item.Category.type)
                 </td>
-
                 <td>
-                    @Html.ActionLink("Book Ticket", "Book", new { id = item.bus_id }) |
-                    @Html.ActionLink("Fare", "Login") 
+                    @Html.DisplayFor(modelItem => item.capacity)
+                </td>
+                <td>
+                   
+                    <font color="red">@Html.ActionLink("Check Fare", "Fare", new { id = item.bus_id }, new { style = "color:Brown;" }) </font>
 
                 </td>
             </tr>
@@ -75,4 +76,64 @@ else
 
     </table>
 }
-  
+else if (ViewBag.cid != "-1" && ViewBag.message!=0)
+{
+    <table class="table" border="1">
+        <tr>
+            <th>
+                Bus Name
+            </th>
+            <th>
+                Number
+            </th>
+            <th>
+                Departure Time
+            </th>
+            <th>
+                Source
+            </th>
+            <th>
+                Destination
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Seats Available
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bus_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bus_no)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.departure_time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Route.source)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Route.destination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.capacity)
+                </td>
+                <td>
+                  @Html.ActionLink("Book Ticket", "Book", new { id = item.bus_id }, new { style = "color:Brown;" })<font color="lime">|</font>
+                 @Html.ActionLink("Check Fare", "Fare", new { id = item.bus_id }, new { style = "color:Brown;" })
+                </td>
+            </tr>
+        }
+
+    </table>
+}

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities1">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntity2">
     <EntitySetMapping Name="Buses">
       <EntityTypeMapping TypeName="DatabaseModel.Bus">
         <MappingFragment StoreEntitySet="Bus">
@@ -11,7 +11,18 @@
           <ScalarProperty Name="start_date" ColumnName="start_date" />
           <ScalarProperty Name="end_date" ColumnName="end_date" />
           <ScalarProperty Name="departure_time" ColumnName="departure_time" />
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
           <ScalarProperty Name="route_id" ColumnName="route_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bus_Seat">
+      <EntityTypeMapping TypeName="DatabaseModel.Bus_Seat">
+        <MappingFragment StoreEntitySet="Bus_Seat">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
+          <ScalarProperty Name="bus_id" ColumnName="bus_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -20,9 +31,6 @@
         <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="category_id" ColumnName="category_id" />
           <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="above_16" ColumnName="above_16" />
-          <ScalarProperty Name="below_16" ColumnName="below_16" />
-          <ScalarProperty Name="below_5" ColumnName="below_5" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -32,7 +40,7 @@
           <ScalarProperty Name="passenger_id" ColumnName="passenger_id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="age" ColumnName="age" />
-          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
           <ScalarProperty Name="user_id" ColumnName="user_id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -43,10 +51,8 @@
           <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
           <ScalarProperty Name="bus_id" ColumnName="bus_id" />
           <ScalarProperty Name="passenger_id" ColumnName="passenger_id" />
-          <ScalarProperty Name="fare" ColumnName="fare" />
           <ScalarProperty Name="date_of_journey" ColumnName="date_of_journey" />
-          <ScalarProperty Name="seat_id" ColumnName="seat_id" />
-          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

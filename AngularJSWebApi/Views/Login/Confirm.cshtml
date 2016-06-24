@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AngularJSWebApi.Models.Passenger>
+
+@{
+    ViewBag.Title = "Confirm";
+}
+
+<h2 style="color:red;">Booking Done Successfully</h2>
+
+<h3 style="color:teal;text-decoration:underline">Reservation Details</h3>
+<h4 style="color:brown;text-align:center">Bus Info</h4>
+<table class="table" border="1">
+    <tr>
+        <th>Bus No</th>
+        <td>@ViewBag.bus_no</td>
+        <th>Bus Name</th>
+        <td>@ViewBag.bus_name</td>
+    </tr>
+    <tr>
+        <th>Source</th>
+        <td>@ViewBag.bus_src</td>
+        <th>Destination</th>
+        <td>@ViewBag.bus_dest</td>
+    </tr>
+    <tr>
+        <th>Departure Time</th>
+        <td>@ViewBag.bus_time</td>
+        <th>Distance(Km)</th>
+        <td>@ViewBag.bus_distance</td>
+    </tr>
+    <tr>
+        <th>Journey Date</th>
+        <td>@ViewBag.bus_jdate</td>
+        <th>Type</th>
+        <td>@ViewBag.bus_type</td>
+    </tr>
+</table>
+
+<h4 style="color:brown;text-align:center">Passenger Info</h4>
+<table class="table" border="1">
+    <tr>
+        <th>Passenger Name</th>
+        <th>Age</th>
+    </tr>
+  @foreach(var p in Model)
+  {
+      <tr>
+          <td>
+             @p.name
+          </td>
+          <td>
+              @p.age
+          </td>
+      </tr>
+  }
+
+</table>
+<h4 style="color:brown;text-align:center">Total Fare</h4>
+<h5 style="text-decoration:double; text-align: center">@ViewBag.fare.00</h5>

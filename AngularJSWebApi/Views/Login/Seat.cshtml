@@ -1,0 +1,95 @@
+﻿@model IEnumerable<AngularJSWebApi.Models.Bus_Seat>
+
+@{
+    ViewBag.Title = "Seat";
+}
+
+
+
+<head>
+    <title></title>
+    <style>
+        fieldset {
+            display: block;
+            margin-left: 10px;
+            margin-right: 800px;
+        }
+    </style>
+</head>
+<body>
+    
+    <fieldset>
+        <form method="post" action="http://localhost:62541/Login/Seat">
+
+
+            A1<input type="checkbox" name="ida1" value="A1" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            A3<input type="checkbox" name="ida3" value="A3" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           
+
+            <br />
+
+            A2<input type="checkbox" name="ida2" value="A2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            A4<input type="checkbox" name="ida4" value="A4" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       
+
+            <br />
+            <br />
+            <br />
+
+
+            B1<input type="checkbox" name="idb1" value="B1" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            B3<input type="checkbox" name="idb3" value="B3" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          
+
+            <br />
+
+            B2<input type="checkbox" name="idb2" value="B2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            B4<input type="checkbox" name="idb4" value="B4" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+
+
+
+            <input type="submit" value="Submit" />
+        </form>
+
+    </fieldset>
+
+
+</body>
+@if(ViewBag.Obj!=0)
+{
+    <h2 style="color:brown;">Seats Info</h2>
+    <table border="1">
+        <tr>
+            <th>
+                Seat No
+            </th>
+            <th>
+                Bus Id
+            </th>
+            <th>
+                Bus Name
+            </th>
+            <th>
+                Status
+            </th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.seat_no
+                </td>
+                <td>
+                    @item.bus_id
+                </td>
+                <td>
+                    @item.Bus.bus_name
+                </td>
+                <td>
+                    @item.status
+                </td>
+            </tr>
+        }
+    </table>
+}

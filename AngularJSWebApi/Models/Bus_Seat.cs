@@ -12,16 +12,13 @@ namespace AngularJSWebApi.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class Bus_Seat
     {
-        public Category()
-        {
-            this.Buses = new HashSet<Bus>();
-        }
+        public int id { get; set; }
+        public string seat_no { get; set; }
+        public Nullable<int> bus_id { get; set; }
+        public string status { get; set; }
     
-        public int category_id { get; set; }
-        public string type { get; set; }
-    
-        public virtual ICollection<Bus> Buses { get; set; }
+        public virtual Bus Bus { get; set; }
     }
 }

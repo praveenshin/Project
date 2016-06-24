@@ -17,13 +17,10 @@ namespace AngularJSWebApi.Models
         public int reservation_id { get; set; }
         public int bus_id { get; set; }
         public int passenger_id { get; set; }
-        public decimal fare { get; set; }
         public System.DateTime date_of_journey { get; set; }
-        public int seat_id { get; set; }
-        public int category_id { get; set; }
+        public int seat_no { get; set; }
     
         public virtual Bus Bus { get; set; }
-        public virtual Category Category { get; set; }
         public virtual Passenger Passenger { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 
 namespace AngularJSWebApi.Controllers
@@ -31,7 +32,7 @@ namespace AngularJSWebApi.Controllers
 
         public IHttpActionResult Post(User_details b)
         {
-
+            b.password = Encryptdata(b.password);
             var user = db.AddUser(b);
 
             return Created(Request.RequestUri + "/" + user.user_id, user);
@@ -40,7 +41,7 @@ namespace AngularJSWebApi.Controllers
         public void Put(int id, User_details b)
         {
             b.user_id = id;
-
+            b.password = Encryptdata(b.password);
             if (!db.UpdateUser(b))
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -54,5 +55,12 @@ namespace AngularJSWebApi.Controllers
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
         }
+
+        private static string Encryptdata(string password)
+        {
+            byte[] encode = Encoding.UTF8.GetBytes(password);
+            return Convert.ToBase64String(encode);
+        }
+      
     }
 }

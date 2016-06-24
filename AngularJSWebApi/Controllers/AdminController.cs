@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace AngularJSWebApi.Controllers
 {
+    [Authorize(Users="Praveen")]
     public class AdminController : Controller
     {
-        //
-        // GET: /Admin/
+        
         public ActionResult Index()
         {
             return View();

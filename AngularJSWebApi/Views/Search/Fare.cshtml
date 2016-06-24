@@ -1,0 +1,61 @@
+﻿@model AngularJSWebApi.Models.Fare
+
+@{
+    ViewBag.Title = "Fare";
+}
+
+<h3 style="color:teal;text-align:center;">Bus Details</h3>
+
+<table class="table" border="1" >
+     <tr>
+         <th>Bus No</th>
+         <td>@ViewBag.bus_no</td>
+         <th>Bus Name</th>
+         <td>@ViewBag.bus_name</td>
+     </tr>
+    <tr>
+        <th>Source</th>
+        <td>@ViewBag.bus_src</td>
+        <th>Destination</th>
+        <td>@ViewBag.bus_dest</td>
+    </tr>
+    <tr>
+        <th>Departure Time</th>
+        <td>@ViewBag.bus_time</td>
+        <th>Distance(Km)</th>
+        <td>@ViewBag.bus_distance</td>
+    </tr>
+ </table>
+
+<h3 style="color:teal;text-align:center;">Fare Details</h3>
+<table class="table" border="1">
+     <tr>
+        <th>
+            Type
+        </th>
+         <td>
+             @Model.Type
+         </td>
+     </tr>
+    <tr>
+        <th>
+            Above 16(INR)
+        </th>
+         <td>
+             @Model.A16
+         </td>
+    </tr>
+    <tr>
+        <th>
+            Below 16(INR)
+        </th>
+         <td>
+             @Model.B16
+         </td>
+     </tr>
+    <tr>
+        <th>Under 5(INR)</th>
+         <td>@Model.U5</td>
+    </tr>
+    
+</table>

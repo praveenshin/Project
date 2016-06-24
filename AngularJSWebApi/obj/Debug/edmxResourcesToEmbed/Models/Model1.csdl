@@ -11,10 +11,22 @@
     <Property Name="start_date" Type="DateTime" Precision="0" />
     <Property Name="end_date" Type="DateTime" Precision="0" />
     <Property Name="departure_time" Type="Time" Precision="7" />
+    <Property Name="capacity" Type="Int32" />
     <Property Name="route_id" Type="Int32" />
-    <NavigationProperty Name="Category" Relationship="Self.FK__Bus__category_id__1B0907CE" FromRole="Bus" ToRole="Category" />
-    <NavigationProperty Name="Route" Relationship="Self.FK__Bus__route_id__36B12243" FromRole="Bus" ToRole="Route" />
-    <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__bus_i__24927208" FromRole="Bus" ToRole="Reservation" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Bus__category_id__4AB81AF0" FromRole="Bus" ToRole="Category" />
+    <NavigationProperty Name="Route" Relationship="Self.FK__Bus__route_id__4BAC3F29" FromRole="Bus" ToRole="Route" />
+    <NavigationProperty Name="Bus_Seat" Relationship="Self.FK__Bus_Seat__bus_id__29221CFB" FromRole="Bus" ToRole="Bus_Seat" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__bus_i__4D94879B" FromRole="Bus" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="Bus_Seat">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="seat_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bus_id" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bus" Relationship="Self.FK__Bus_Seat__bus_id__29221CFB" FromRole="Bus_Seat" ToRole="Bus" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -22,11 +34,7 @@
     </Key>
     <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="above_16" Type="Int32" />
-    <Property Name="below_16" Type="Int32" />
-    <Property Name="below_5" Type="Int32" />
-    <NavigationProperty Name="Buses" Relationship="Self.FK__Bus__category_id__1B0907CE" FromRole="Category" ToRole="Bus" />
-    <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__categ__25869641" FromRole="Category" ToRole="Reservation" />
+    <NavigationProperty Name="Buses" Relationship="Self.FK__Bus__category_id__4AB81AF0" FromRole="Category" ToRole="Bus" />
   </EntityType>
   <EntityType Name="Passenger">
     <Key>
@@ -35,10 +43,10 @@
     <Property Name="passenger_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="age" Type="Int32" Nullable="false" />
-    <Property Name="mobile_no" Type="Int64" Nullable="false" />
+    <Property Name="gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="user_id" Type="Int32" />
-    <NavigationProperty Name="User_details" Relationship="Self.FK__Passenger__user___1367E606" FromRole="Passenger" ToRole="User_details" />
-    <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__passe__239E4DCF" FromRole="Passenger" ToRole="Reservation" />
+    <NavigationProperty Name="User_details" Relationship="Self.FK__Passenger__user___5EBF139D" FromRole="Passenger" ToRole="User_details" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__passe__5FB337D6" FromRole="Passenger" ToRole="Reservation" />
   </EntityType>
   <EntityType Name="Reservation">
     <Key>
@@ -47,13 +55,10 @@
     <Property Name="reservation_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="bus_id" Type="Int32" Nullable="false" />
     <Property Name="passenger_id" Type="Int32" Nullable="false" />
-    <Property Name="fare" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="date_of_journey" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="seat_id" Type="Int32" Nullable="false" />
-    <Property Name="category_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Bus" Relationship="Self.FK__Reservati__bus_i__24927208" FromRole="Reservation" ToRole="Bus" />
-    <NavigationProperty Name="Category" Relationship="Self.FK__Reservati__categ__25869641" FromRole="Reservation" ToRole="Category" />
-    <NavigationProperty Name="Passenger" Relationship="Self.FK__Reservati__passe__239E4DCF" FromRole="Reservation" ToRole="Passenger" />
+    <Property Name="seat_no" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bus" Relationship="Self.FK__Reservati__bus_i__4D94879B" FromRole="Reservation" ToRole="Bus" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK__Reservati__passe__5FB337D6" FromRole="Reservation" ToRole="Passenger" />
   </EntityType>
   <EntityType Name="Route">
     <Key>
@@ -63,7 +68,7 @@
     <Property Name="source" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="destination" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="distance" Type="Decimal" Precision="18" Scale="0" />
-    <NavigationProperty Name="Buses" Relationship="Self.FK__Bus__route_id__36B12243" FromRole="Route" ToRole="Bus" />
+    <NavigationProperty Name="Buses" Relationship="Self.FK__Bus__route_id__4BAC3F29" FromRole="Route" ToRole="Bus" />
   </EntityType>
   <EntityType Name="User_details">
     <Key>
@@ -76,9 +81,9 @@
     <Property Name="mobile_no" Type="Int64" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Passengers" Relationship="Self.FK__Passenger__user___1367E606" FromRole="User_details" ToRole="Passenger" />
+    <NavigationProperty Name="Passengers" Relationship="Self.FK__Passenger__user___5EBF139D" FromRole="User_details" ToRole="Passenger" />
   </EntityType>
-  <Association Name="FK__Bus__category_id__1B0907CE">
+  <Association Name="FK__Bus__category_id__4AB81AF0">
     <End Role="Category" Type="Self.Category" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -92,7 +97,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Bus__route_id__36B12243">
+  <Association Name="FK__Bus__route_id__4BAC3F29">
     <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
     <End Role="Bus" Type="Self.Bus" Multiplicity="*" />
     <ReferentialConstraint>
@@ -104,7 +109,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Reservati__bus_i__24927208">
+  <Association Name="FK__Bus_Seat__bus_id__29221CFB">
+    <End Role="Bus" Type="Self.Bus" Multiplicity="0..1" />
+    <End Role="Bus_Seat" Type="Self.Bus_Seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bus">
+        <PropertyRef Name="bus_id" />
+      </Principal>
+      <Dependent Role="Bus_Seat">
+        <PropertyRef Name="bus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__bus_i__4D94879B">
     <End Role="Bus" Type="Self.Bus" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -118,19 +135,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Reservati__categ__25869641">
-    <End Role="Category" Type="Self.Category" Multiplicity="1" />
-    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="category_id" />
-      </Principal>
-      <Dependent Role="Reservation">
-        <PropertyRef Name="category_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Passenger__user___1367E606">
+  <Association Name="FK__Passenger__user___5EBF139D">
     <End Role="User_details" Type="Self.User_details" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -144,7 +149,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Reservati__passe__239E4DCF">
+  <Association Name="FK__Reservati__passe__5FB337D6">
     <End Role="Passenger" Type="Self.Passenger" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -158,34 +163,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="DatabaseEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DatabaseEntity2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Buses" EntityType="Self.Bus" />
+    <EntitySet Name="Bus_Seat" EntityType="Self.Bus_Seat" />
     <EntitySet Name="Categories" EntityType="Self.Category" />
     <EntitySet Name="Passengers" EntityType="Self.Passenger" />
     <EntitySet Name="Reservations" EntityType="Self.Reservation" />
     <EntitySet Name="Routes" EntityType="Self.Route" />
     <EntitySet Name="User_details" EntityType="Self.User_details" />
-    <AssociationSet Name="FK__Bus__category_id__1B0907CE" Association="Self.FK__Bus__category_id__1B0907CE">
+    <AssociationSet Name="FK__Bus__category_id__4AB81AF0" Association="Self.FK__Bus__category_id__4AB81AF0">
       <End Role="Category" EntitySet="Categories" />
       <End Role="Bus" EntitySet="Buses" />
     </AssociationSet>
-    <AssociationSet Name="FK__Bus__route_id__36B12243" Association="Self.FK__Bus__route_id__36B12243">
+    <AssociationSet Name="FK__Bus__route_id__4BAC3F29" Association="Self.FK__Bus__route_id__4BAC3F29">
       <End Role="Route" EntitySet="Routes" />
       <End Role="Bus" EntitySet="Buses" />
     </AssociationSet>
-    <AssociationSet Name="FK__Reservati__bus_i__24927208" Association="Self.FK__Reservati__bus_i__24927208">
+    <AssociationSet Name="FK__Bus_Seat__bus_id__29221CFB" Association="Self.FK__Bus_Seat__bus_id__29221CFB">
+      <End Role="Bus" EntitySet="Buses" />
+      <End Role="Bus_Seat" EntitySet="Bus_Seat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__bus_i__4D94879B" Association="Self.FK__Reservati__bus_i__4D94879B">
       <End Role="Bus" EntitySet="Buses" />
       <End Role="Reservation" EntitySet="Reservations" />
     </AssociationSet>
-    <AssociationSet Name="FK__Reservati__categ__25869641" Association="Self.FK__Reservati__categ__25869641">
-      <End Role="Category" EntitySet="Categories" />
-      <End Role="Reservation" EntitySet="Reservations" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Passenger__user___1367E606" Association="Self.FK__Passenger__user___1367E606">
+    <AssociationSet Name="FK__Passenger__user___5EBF139D" Association="Self.FK__Passenger__user___5EBF139D">
       <End Role="User_details" EntitySet="User_details" />
       <End Role="Passenger" EntitySet="Passengers" />
     </AssociationSet>
-    <AssociationSet Name="FK__Reservati__passe__239E4DCF" Association="Self.FK__Reservati__passe__239E4DCF">
+    <AssociationSet Name="FK__Reservati__passe__5FB337D6" Association="Self.FK__Reservati__passe__5FB337D6">
       <End Role="Passenger" EntitySet="Passengers" />
       <End Role="Reservation" EntitySet="Reservations" />
     </AssociationSet>

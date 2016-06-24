@@ -22,7 +22,7 @@ namespace AngularJSWebApi.Models
         public int passenger_id { get; set; }
         public string name { get; set; }
         public int age { get; set; }
-        public long mobile_no { get; set; }
+        public string gender { get; set; }
         public Nullable<int> user_id { get; set; }
     
         public virtual User_details User_details { get; set; }

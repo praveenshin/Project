@@ -13,10 +13,10 @@ namespace AngularJSWebApi.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabaseEntities1 : DbContext
+    public partial class DatabaseEntity2 : DbContext
     {
-        public DatabaseEntities1()
-            : base("name=DatabaseEntities1")
+        public DatabaseEntity2()
+            : base("name=DatabaseEntity2")
         {
         }
     
@@ -26,6 +26,7 @@ namespace AngularJSWebApi.Models
         }
     
         public virtual DbSet<Bus> Buses { get; set; }
+        public virtual DbSet<Bus_Seat> Bus_Seat { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Passenger> Passengers { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }

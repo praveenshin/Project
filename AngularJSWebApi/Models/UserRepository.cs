@@ -8,7 +8,7 @@ namespace AngularJSWebApi.Models
 {
     public class UserRepository:IUserRepository
     {
-        private DatabaseEntities1 db = new DatabaseEntities1();
+        private DatabaseEntity2 db = new DatabaseEntity2();
 
         public IEnumerable<User_details> GetAll()
         {

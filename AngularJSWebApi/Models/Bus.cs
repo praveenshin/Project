@@ -16,6 +16,7 @@ namespace AngularJSWebApi.Models
     {
         public Bus()
         {
+            this.Bus_Seat = new HashSet<Bus_Seat>();
             this.Reservations = new HashSet<Reservation>();
         }
     
@@ -26,10 +27,12 @@ namespace AngularJSWebApi.Models
         public Nullable<System.DateTime> start_date { get; set; }
         public Nullable<System.DateTime> end_date { get; set; }
         public Nullable<System.TimeSpan> departure_time { get; set; }
+        public Nullable<int> capacity { get; set; }
         public Nullable<int> route_id { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Route Route { get; set; }
+        public virtual ICollection<Bus_Seat> Bus_Seat { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }
