@@ -11,22 +11,34 @@ namespace AngularJSWebApi.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User_details
     {
         public User_details()
         {
             this.Passengers = new HashSet<Passenger>();
+            this.Reservations = new HashSet<Reservation>();
+            this.Ticket_price_details = new HashSet<Ticket_price_details>();
         }
-    
+        
         public int user_id { get; set; }
+        [Required(ErrorMessage="Enter User Name")]
         public string name { get; set; }
+        [DOBValidator]
         public System.DateTime date_of_birth { get; set; }
+         [Required(ErrorMessage = "Enter Email Address")]
+       [DataType(DataType.EmailAddress)]
         public string email_id { get; set; }
+         [Required(ErrorMessage = "Enter Mobile No")]
         public long mobile_no { get; set; }
+         [Required(ErrorMessage = "Enter Password")]
         public string password { get; set; }
+         [Required(ErrorMessage = "Enter Address Info")]
         public string address { get; set; }
     
         public virtual ICollection<Passenger> Passengers { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Ticket_price_details> Ticket_price_details { get; set; }
     }
 }

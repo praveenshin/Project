@@ -14,11 +14,6 @@ namespace AngularJSWebApi.Models
     
     public partial class Passenger
     {
-        public Passenger()
-        {
-            this.Reservations = new HashSet<Reservation>();
-        }
-    
         public int passenger_id { get; set; }
         public string name { get; set; }
         public int age { get; set; }
@@ -26,6 +21,5 @@ namespace AngularJSWebApi.Models
         public Nullable<int> user_id { get; set; }
     
         public virtual User_details User_details { get; set; }
-        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

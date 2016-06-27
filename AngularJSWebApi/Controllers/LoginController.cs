@@ -15,7 +15,7 @@ namespace AngularJSWebApi.Controllers
     {
         static int count = 0;
         static int counter = 0;
-        private DatabaseEntity2 db = new DatabaseEntity2();
+        private DatabaseEntity4 db = new DatabaseEntity4();
         public bool isValid(string name, string password)
         {
             string paswd = Encryptdata(password);
@@ -32,14 +32,14 @@ namespace AngularJSWebApi.Controllers
             byte[] encode = Encoding.UTF8.GetBytes(password);
             return Convert.ToBase64String(encode);
         }
-      
+
         [HttpGet]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-       
+      
         [HttpPost]
         public ActionResult Login(User_details user, string returnUrl)
         {
@@ -87,6 +87,13 @@ namespace AngularJSWebApi.Controllers
 
         public ActionResult Error()
         {
+            
+            return View();
+        }
+
+         public ActionResult Error1()
+        {
+            
             return View();
         }
 
@@ -125,10 +132,11 @@ namespace AngularJSWebApi.Controllers
          [Authorize]
         public ActionResult Index()
         {
-          
+
             string name = Convert.ToString(Session["name"]);
             var p = db.Passengers.Where(u => u.User_details.name == name).Select(p1 => p1).ToList();
-            return View(p);
+            return View(p);        
+          
         }
          [Authorize]
         [HttpGet]
@@ -140,6 +148,7 @@ namespace AngularJSWebApi.Controllers
              }
              else
              {
+                 ViewBag.count = count;
                  ViewBag.message = "Sorry,You cannot add more than 5";
                  return View();
              }
@@ -156,6 +165,7 @@ namespace AngularJSWebApi.Controllers
             p1.age = p.age;
             p1.gender = p.gender;
             p1.user_id = uid;
+            Session["Passenger"] = p1;
             if(ModelState.IsValid)
             {
                 
@@ -332,7 +342,15 @@ namespace AngularJSWebApi.Controllers
                      }
                  }
              }
+             Reservation r = new Reservation();
+             r.date_of_journey = bus.start_date;
+             r.bus_id = bus.bus_id;
+             r.user_id = Convert.ToInt32(Session["id"]);
+             db.Reservations.Add(r);
+             db.SaveChanges();
              ViewBag.fare = totalfare;
+             Session["fare"] = totalfare;
+             ViewBag.rid = r.reservation_id;
              return View(list);
          }
 
@@ -355,13 +373,23 @@ namespace AngularJSWebApi.Controllers
         [HttpGet]
         public ActionResult Seat()
         {
-            return View(db.Bus_Seat.ToList());
+                if(count==0)
+                {
+                    return RedirectToAction("Error1", "Login");
+                }
+                else
+                {
+                    return View(db.Bus_Seat.ToList());
+                }
+               
+           
         }
         [Authorize]
         [HttpPost]
         public ActionResult Seat(string ida1, string ida2, string ida3, string ida4, string idb1, string idb2, string idb3, string idb4)
         {
             Bus b = Session["Obj"] as Bus;
+            Passenger p = Session["Passenger"] as Passenger;
             if(ida1!="" && ida1!=null)
             {
                 Bus_Seat seat = new Bus_Seat();
@@ -465,7 +493,7 @@ namespace AngularJSWebApi.Controllers
             b1.capacity = bus.capacity - counter;
             db.Entry(b1).State = EntityState.Modified;
             db.SaveChanges();
-            ViewBag.obj = db.Bus_Seat.Count();
+            ViewBag.busname = b1.bus_name;
             return View(db.Bus_Seat.ToList());
         }
       

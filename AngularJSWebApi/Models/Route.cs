@@ -17,6 +17,7 @@ namespace AngularJSWebApi.Models
         public Route()
         {
             this.Buses = new HashSet<Bus>();
+            this.Ticket_price_details = new HashSet<Ticket_price_details>();
         }
     
         public int route_id { get; set; }
@@ -25,5 +26,6 @@ namespace AngularJSWebApi.Models
         public Nullable<decimal> distance { get; set; }
     
         public virtual ICollection<Bus> Buses { get; set; }
+        public virtual ICollection<Ticket_price_details> Ticket_price_details { get; set; }
     }
 }

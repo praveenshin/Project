@@ -58,9 +58,12 @@
 </body>
 @if(ViewBag.Obj!=0)
 {
-    <h2 style="color:brown;">Seats Info</h2>
+    if (ViewBag.busname!=null)
+    {
+        <h2 style="color:brown;">@ViewBag.busname Seats Info</h2>
     <table border="1">
         <tr>
+          
             <th>
                 Seat No
             </th>
@@ -76,7 +79,10 @@
         </tr>
         @foreach(var item in Model)
         {
-            <tr>
+            if(item.Bus.bus_name==ViewBag.busname)
+            {
+                <tr>
+                   
                 <td>
                     @item.seat_no
                 </td>
@@ -90,6 +96,16 @@
                     @item.status
                 </td>
             </tr>
+            }
+            
         }
     </table>
+    }
+    
 }
+
+<div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("Confirm", "Confirm") |
+    @Html.ActionLink("Cancel", "Cancel")
+</div>

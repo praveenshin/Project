@@ -8,7 +8,7 @@ namespace AngularJSWebApi.Models
 {
     public class RouteRepository:IRouteRepository
     {
-        private DatabaseEntity2 db = new DatabaseEntity2();
+        private DatabaseEntity4 db = new DatabaseEntity4();
 
         public IEnumerable<Route> GetAll()
         {

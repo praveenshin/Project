@@ -9,7 +9,7 @@ namespace AngularJSWebApi.Controllers
 {
     public class SearchController : Controller
     {
-        private DatabaseEntity2 db = new DatabaseEntity2();
+        private DatabaseEntity4 db = new DatabaseEntity4();
         [HttpGet]
         public ActionResult Index()
         {
@@ -120,6 +120,28 @@ namespace AngularJSWebApi.Controllers
                 return View(f);
             }
            
+        }
+        [Authorize]
+        public ActionResult History()
+        {
+            int uid = Convert.ToInt32(Session["id"]);
+            List<Reservation> list = new List<Reservation>();
+            ViewBag.fare = Session["fare"];
+            foreach(var res in db.Reservations.ToList())
+            {
+                if(res.user_id==uid)
+                {
+                    list.Add(res);
+                    return View(list);
+                }
+                else
+                {
+                    ViewBag.message="Not Found";
+                    return View();
+                }
+            }
+          
+            return View();
         }
 	}
 }

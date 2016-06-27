@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntity2">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntity4">
     <EntitySetMapping Name="Buses">
       <EntityTypeMapping TypeName="DatabaseModel.Bus">
         <MappingFragment StoreEntitySet="Bus">
@@ -50,9 +50,8 @@
         <MappingFragment StoreEntitySet="Reservation">
           <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
           <ScalarProperty Name="bus_id" ColumnName="bus_id" />
-          <ScalarProperty Name="passenger_id" ColumnName="passenger_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
           <ScalarProperty Name="date_of_journey" ColumnName="date_of_journey" />
-          <ScalarProperty Name="seat_no" ColumnName="seat_no" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -63,6 +62,17 @@
           <ScalarProperty Name="source" ColumnName="source" />
           <ScalarProperty Name="destination" ColumnName="destination" />
           <ScalarProperty Name="distance" ColumnName="distance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket_price_details">
+      <EntityTypeMapping TypeName="DatabaseModel.Ticket_price_details">
+        <MappingFragment StoreEntitySet="Ticket_price_details">
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="bus_id" ColumnName="bus_id" />
+          <ScalarProperty Name="date_of_journey" ColumnName="date_of_journey" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

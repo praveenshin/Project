@@ -8,7 +8,7 @@ namespace AngularJSWebApi.Models
 {
     public class BusRepository:IBusRepository
     {
-        private DatabaseEntity2 db = new DatabaseEntity2();
+        private DatabaseEntity4 db = new DatabaseEntity4();
 
         public IEnumerable<Bus> GetAll()
         {
